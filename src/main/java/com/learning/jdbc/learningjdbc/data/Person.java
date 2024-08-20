@@ -1,9 +1,19 @@
 package com.learning.jdbc.learningjdbc.data;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
+
 import java.util.Date;
 
+@Entity
+@NamedQuery(name = "find_all_persons",query = "Select p from Person p")
 public class Person {
+    @Id
+    @GeneratedValue
     private int id;
+
     private String name;
 
     private String location;
@@ -39,6 +49,12 @@ public class Person {
     }
 
     public void setBirthDate(Date birth_date) {
+        this.birth_date = birth_date;
+    }
+
+    public Person(String name, String location, Date birth_date) {
+        this.name = name;
+        this.location = location;
         this.birth_date = birth_date;
     }
 
